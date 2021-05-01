@@ -20,7 +20,7 @@ class OxyApp extends StatelessWidget // every widget has to extend either of the
   {
     List<String> titles = ["List1", "List2", "List3"];
     List<String> names = ["Institution 1", "Institution 2", "Institution 3"];
-    return new MaterialApp(
+    return new MaterialApp( // MaterialApp class extends StatefulWidget which extends Widget
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text("Oxygen cylinder services"),
