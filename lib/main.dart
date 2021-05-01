@@ -23,18 +23,17 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
     setState(() { // setState: a State function that forces flutter to call the below build() function (re-render the below MaterialApp (though internally, not the entire widget but only the sub-widget affected by data change gets re-rendered))
       _listIndex = _listIndex + 1;
     });
-    print ("Institution n details");
-    print (_listIndex);
+    print ("Service $_listIndex details");
   }
   @override
   Widget build(BuildContext context) // every widget is a Dart class with build method that returns Widget
   {
     List<String> titles = ["List1", "List2", "List3"];
-    List<String> names = ["Institution 1", "Institution 2", "Institution 3"];
+    List<String> names = ["Service 1", "Service 2", "Service 3"];
     return new MaterialApp( // MaterialApp class extends StatefulWidget which extends Widget
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text("Oxygen cylinder services"),
+          title: new Text("Oxygen cylinder, concentrator, etc. services"),
         ),
         body: new Column(
           children: [
@@ -45,11 +44,11 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
             ),
             new RaisedButton(
               child: new Text(names.elementAt(1)),
-              onPressed: () => print ("Institution 2 details"),
+              onPressed: () => print ("Service 2 details"),
             ), // using anonymous function
             new RaisedButton(
               child: new Text(names[2]),
-              onPressed: (){print ("Institution 3 details");},
+              onPressed: (){print ("Service 3 details");},
             ), // using anonymous function
           ],
         ),
