@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './services_list.dart';
 
 void main()
 {
@@ -12,18 +13,18 @@ class OxyApp extends StatefulWidget // every widget class has to extend either o
   // unlike in case of StatelessWidget we have 2 classes in case of StatefulWidget to ensure when external data changes, only OxyApp gets re-created while OxyAppState remains persistent/intact
   @override
   State<StatefulWidget> createState() {
-    return new OxyAppState();
+    return new _OxyAppState();
   }
 }
 
-class OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
-  int listIndex = 0;
-  void viewDetails() {
-    setState(() { // setState: a State function that forces flutter to call the below build() function (re-render the below MaterialApp (though internally, not the entire widget but only the affected sub-widget gets re-rendered))
-      listIndex = listIndex + 1;
+class _OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
+  int _listIndex = 0; // an '_' prefix ensures a class/var/function cannot be accessed outside the current file
+  void _viewDetails() {
+    setState(() { // setState: a State function that forces flutter to call the below build() function (re-render the below MaterialApp (though internally, not the entire widget but only the sub-widget affected by data change gets re-rendered))
+      _listIndex = _listIndex + 1;
     });
     print ("Institution n details");
-    print (listIndex);
+    print (_listIndex);
   }
   @override
   Widget build(BuildContext context) // every widget is a Dart class with build method that returns Widget
@@ -37,10 +38,10 @@ class OxyAppState extends State<OxyApp> { // State is a generic class (of type O
         ),
         body: new Column(
           children: [
-            new Text(titles[listIndex]),
+            new ServicesList(titles[_listIndex]),
             new RaisedButton(
               child: new Text(names.elementAt(0)),
-              onPressed: viewDetails, // writing viewDetails() instead will return void to onPressed and not the (pointer to) function viewDetails itself
+              onPressed: _viewDetails, // writing viewDetails() instead will return void to onPressed and not the (pointer to) function viewDetails itself
             ),
             new RaisedButton(
               child: new Text(names.elementAt(1)),
