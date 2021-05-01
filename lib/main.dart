@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import './services_list.dart';
 import './institution.dart';
@@ -31,18 +29,18 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
 
   @override
   Widget build(BuildContext context) { // every widget is a Dart class with build method that returns Widget
-    List<Map<String,Object>> serviceListMap = [
+    const List<Map<String,Object>> serviceListMap = [
       {
         "serviceType": "Oxygen Cylinder",
-        "institutions": ["Institute 11, Institute 21, Institute 31"],
+        "institutions": ["Institute 11", "Institute 21", "Institute 31"],
       },
       {
         "serviceType": "Oxygen Concentrator",
-        "institutions": ["Institute 12, Institute 22, Institute 32"],
+        "institutions": ["Institute 12", "Institute 22", "Institute 32"],
       },
       {
         "serviceType": "Medicines",
-        "institutions": ["Institute 13, Institute 23, Institute 33"],
+        "institutions": ["Institute 13", "Institute 23", "Institute 33"],
       },
     ];
 
