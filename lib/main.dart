@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './services_list.dart';
+import './service.dart';
 
 void main()
 {
@@ -19,7 +20,7 @@ class OxyApp extends StatefulWidget // every widget class has to extend either o
 
 class _OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
   int _listIndex = 0; // an '_' prefix ensures a class/var/function cannot be accessed outside the current file
-  void _viewDetails() {
+  void _viewService() {
     setState(() { // setState: a State function that forces flutter to call the below build() function (re-render the below MaterialApp (though internally, not the entire widget but only the sub-widget affected by data change gets re-rendered))
       _listIndex = _listIndex + 1;
     });
@@ -38,18 +39,9 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
         body: new Column(
           children: [
             new ServicesList(titles[_listIndex]),
-            new RaisedButton(
-              child: new Text(names.elementAt(0)),
-              onPressed: _viewDetails, // writing viewDetails() instead will return void to onPressed and not the (pointer to) function viewDetails itself
-            ),
-            new RaisedButton(
-              child: new Text(names.elementAt(1)),
-              onPressed: () => print ("Service 2 details"),
-            ), // using anonymous function
-            new RaisedButton(
-              child: new Text(names[2]),
-              onPressed: (){print ("Service 3 details");},
-            ), // using anonymous function
+            new Service(_viewService),
+            new Service(_viewService), // using anonymous function
+            new Service(_viewService), // using anonymous function
           ],
         ),
       ),

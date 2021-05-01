@@ -9,7 +9,7 @@ class ServicesList extends StatelessWidget {
   @override
   Widget build (BuildContext context) { // gets rebuild when setState() forces the affected ServicesList widget (through the external ServicesList() constructor call) to re-render (in main.dart)
     return new Container(
-      width: double.infinity, // ensures container takes as much size (width) as possible
+      width: double.infinity, // infinity is a static constant variable of 'double' class which extends 'num' class // ensures container takes as much width space as possible
       margin: EdgeInsets.all(10), // Dart allows creation of multiple special constructors (eg: here, EdgeInsets.all(), EdgeInsets.only())
       child: new Text(
         servicesListText,
