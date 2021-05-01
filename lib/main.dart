@@ -39,9 +39,9 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
         body: new Column(
           children: [
             new ServicesList(titles[_listIndex]),
-            new Service(_viewService),
-            new Service(_viewService), // using anonymous function
-            new Service(_viewService), // using anonymous function
+            new Service(_viewService, names.elementAt(0)),
+            new Service(_viewService, names[1]), // using anonymous function
+            new Service(_viewService, names[2]), // using anonymous function
           ],
         ),
       ),
