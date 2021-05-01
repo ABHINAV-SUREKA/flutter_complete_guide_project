@@ -19,7 +19,7 @@ class OxyApp extends StatefulWidget // every widget class has to extend either o
 class OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
   int listIndex = 0;
   void viewDetails() {
-    setState(() {
+    setState(() { // setState: a State function that forces flutter to call the below build() function (re-render the below MaterialApp (though internally, not the entire widget but only the affected sub-widget gets re-rendered))
       listIndex = listIndex + 1;
     });
     print ("Institution n details");
