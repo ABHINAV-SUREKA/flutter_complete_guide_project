@@ -8,6 +8,16 @@ class ServicesList extends StatelessWidget {
 
   @override
   Widget build (BuildContext context) { // gets rebuild when setState() forces the affected ServicesList widget (through the external ServicesList() constructor call) to re-render (in main.dart)
-    return new Text(servicesListText);
+    return new Container(
+      width: double.infinity, // ensures container takes as much size (width) as possible
+      margin: EdgeInsets.all(10),
+      child: new Text(
+        servicesListText,
+        style: new TextStyle(
+            fontSize: 25
+        ),
+        textAlign: TextAlign.center,
+      ),
+  );
   }
 }
