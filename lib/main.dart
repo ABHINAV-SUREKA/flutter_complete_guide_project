@@ -7,11 +7,21 @@ void main()
 }
 // above main() function with only one line of code could also be written as: void main() => runApp(new OxyApp());
 
-class OxyApp extends StatelessWidget // every widget has to extend either of the two abstract classes: StatelessWidget or StatefulWidget
+class OxyApp extends StatefulWidget // every widget class has to extend either of the two abstract classes: StatelessWidget or StatefulWidget
 {
+  // unlike in case of StatelessWidget we have 2 classes in case of StatefulWidget to ensure when external data changes, only OxyApp gets re-created while OxyAppState remains persistent/intact
+  @override
+  State<StatefulWidget> createState() {
+    return new OxyAppState();
+  }
+}
+
+class OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
   int listIndex = 0;
   void viewDetails() {
-    listIndex = listIndex + 1;
+    setState(() {
+      listIndex = listIndex + 1;
+    });
     print ("Institution n details");
     print (listIndex);
   }
