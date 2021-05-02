@@ -60,6 +60,12 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
       print ("We have more services");
     }
   }
+  void _resetSelections() {
+    setState(() {
+      _listIndex = 0;
+      _totalServices = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) { // every widget is a Dart class with build method that returns Widget
@@ -72,7 +78,7 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
           callbackFunction: _viewInstitutions, // pointer to the function '_viewInstitutions'
           listIndex: _listIndex,
           serviceListMap: _serviceListMap,
-        ) : new Result(_totalServices),
+        ) : new Result(_totalServices, _resetSelections),
       ),
     ); // 'scaffold' is another widget in material.dart package to create base page design
   }
