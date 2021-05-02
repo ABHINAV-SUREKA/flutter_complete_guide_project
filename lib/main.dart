@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './services_list.dart';
-import './institution.dart';
+import './selection.dart';
+import './result.dart';
 
 void main()
 {
@@ -19,7 +19,7 @@ class OxyApp extends StatefulWidget { // every widget class has to extend either
 
 class _OxyAppState extends State<OxyApp> { // State is a generic class (of type OxyApp, here)
   int _listIndex = 0; // an '_' prefix ensures a class/var/function cannot be accessed outside the current file
-  static const List<Map<String,Object>> serviceListMap = [
+  static const List<Map<String,Object>> _serviceListMap = [
     {
       "serviceType": "Oxygen Cylinder",
       "institutions": ["Institute 11", "Institute 21", "Institute 31"],
@@ -39,7 +39,7 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
       print ("Service $_listIndex details");
       _listIndex = _listIndex + 1;
     });
-    if (_listIndex < serviceListMap.length) {
+    if (_listIndex < _serviceListMap.length) {
       print ("We have more services");
     }
   }
@@ -47,22 +47,17 @@ class _OxyAppState extends State<OxyApp> { // State is a generic class (of type 
   @override
   Widget build(BuildContext context) { // every widget is a Dart class with build method that returns Widget
 
-
     return new MaterialApp( // MaterialApp class extends StatefulWidget which extends Widget
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text("Oxygen cylinder, concentrator, etc. services"),
         ),
-        body: _listIndex < serviceListMap.length ? new Column(
-          children: [
-            new ServicesList(serviceListMap[_listIndex]["serviceType"]),
-            ...(serviceListMap[_listIndex]["institutions"] as List<String>).map((institution) { // using 'as List<String>' to convert Object type (as we have mentioned value as Object in Map) to List<String>  //.map() generates a new list based on old list
-              return new Institution(_viewInstitutions, institution); // returns Institution (Button) widget
-            }).toList() // using toList() as .map() doesn't return a List<Institution> but an Iterable which is a parent class of all the iterables like List
-            // '...': spread operator that takes all the values out of a list and add them to a surrounding list as individual items/values
-          ],
-        ) : new Center(child: new Text("End of Services"),),
+        body: _listIndex < _serviceListMap.length ? new Selection(
+          callbackFunction: _viewInstitutions,
+          listIndex: _listIndex,
+          serviceListMap: _serviceListMap,
+        ) : new Result(),
       ),
-    ); // scaffold is another widget in material.dart package to create base page design
+    ); // 'scaffold' is another widget in material.dart package to create base page design
   }
 }
