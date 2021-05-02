@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 // it's a good practice to have one widget per file
 class Institution extends StatelessWidget {
-  final Function callbackFunction;
+  final Function anonymousCallbackFunction;
   final String institutionName;
 
-  Institution(this.callbackFunction, this.institutionName); // constructor that accepts pointer to a callback function
+  Institution(this.anonymousCallbackFunction, this.institutionName); // constructor that accepts pointer to a callback function
 
   @override
   Widget build (BuildContext context) { // gets rebuild when setState() forces the affected ServicesList widget (through the external ServicesList() constructor call) to re-render (in main.dart)
@@ -15,7 +15,7 @@ class Institution extends StatelessWidget {
         color: Colors.cyanAccent, // 'cyanAccent' is a static constant variable of 'Colors' class
         textColor: Colors.white,
         child: new Text(institutionName),
-        onPressed: callbackFunction,
+        onPressed: anonymousCallbackFunction, // pointer to the function // 'onPressed' takes a function without arguments
       ),
     );
   }
